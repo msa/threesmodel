@@ -5,11 +5,16 @@ class GameBoard
 
   def initialize
     @line_folder = LineFolder.new
+    @adder = NumberAdder.new
   end
 
   # Sets the state of the game board in the form of a Matrix object.
   def state=(matrix)
     @state = matrix
+  end
+
+  def candidates
+    @candidates
   end
 
   # Gets the state of the game board in the form of a Matrix object.
@@ -19,10 +24,13 @@ class GameBoard
 
   # Folds the game board from right to left.
   def fold_left
+    @candidates = []
     new_state = []
-    @state.row_vectors.each {|row|
-      values = row.to_a
+    @state.row_vectors.each_index {|i|
+      values = @state.row_vectors[i].to_a
+      if @line_folder.can_fold?(values) then @candidates << "#{i}:#{3}" end
       @line_folder.fold(values)
+      @adder.add(@candidates)
       new_state << values
     }
     @state = Matrix.rows(new_state)
@@ -61,4 +69,7 @@ class GameBoard
     @state = Matrix.columns(new_state)
   end
 
+  def probability_for(row, column)
+    "100"
+  end
 end

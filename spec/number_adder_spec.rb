@@ -19,14 +19,14 @@ describe NumberAdder do
   end
 
   it "will always return one element when given more candidates" do
-    @number_adder.add(["0:1", "0:2"]).size.should eq(1)
-    @number_adder.add(["0:1", "0:2", "0:3"]).size.should eq(1)
-    @number_adder.add(["0:1", "0:2", "0:3", "0:4"]).size.should eq(1)
+    @number_adder.add(["0:0", "0:1"]).size.should eq(1)
+    @number_adder.add(["0:0", "0:1", "0:2"]).size.should eq(1)
+    @number_adder.add(["0:0", "0:1", "0:2", "0:3"]).size.should eq(1)
   end
 
   it "will always return a valid candidate" do
-    @number_adder.add(["0:1", "0:2", "0:3", "0:4"]).should be_one_of(["0:1", "0:2", "0:3", "0:4"])
-    @number_adder.add(["0:1", "0:2", "0:3", "0:4"]).should be_one_of(["0:1", "0:2", "0:3", "0:4"])
-    @number_adder.add(["0:1", "0:2", "0:3", "0:4"]).should be_one_of(["0:1", "0:2", "0:3", "0:4"])
+    @number_adder.add(["0:0", "0:1"]).should be_one_of(["0:0", "0:1"])
+    @number_adder.add(["0:0", "0:1", "0:2"]).should be_one_of(["0:0", "0:1", "0:2"])
+    @number_adder.add(["0:0", "0:1", "0:2", "0:3"]).should be_one_of(["0:0", "0:1", "0:2", "0:3"])
   end
 end
