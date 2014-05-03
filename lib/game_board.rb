@@ -1,11 +1,12 @@
 require_relative 'line_folder'
+require_relative 'next_number_positioner'
 require "Matrix"
 # A game board keeps and manipulates the state of the game.
 class GameBoard
 
-  def initialize
-    @line_folder = LineFolder.new
-    @adder = NumberAdder.new
+  def initialize(number_adder = NextNumberPositioner.new, line_folder = LineFolder.new )
+    @line_folder = line_folder
+    @adder = number_adder
   end
 
   # Sets the state of the game board in the form of a Matrix object.
@@ -30,7 +31,7 @@ class GameBoard
       values = @state.row_vectors[i].to_a
       if @line_folder.can_fold?(values) then @candidates << "#{i}:#{3}" end
       @line_folder.fold(values)
-      @adder.add(@candidates)
+      @adder.select_position(@candidates)
       new_state << values
     }
     @state = Matrix.rows(new_state)

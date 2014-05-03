@@ -10,8 +10,6 @@ end
 
 task :default => :spec
 
-
-
 namespace :rspec_report do
   desc 'Run all specs and generate RSpec report in HTML'
   task :html => :htmlspec
