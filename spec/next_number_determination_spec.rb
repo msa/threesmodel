@@ -1,13 +1,21 @@
-require_relative "../lib/next_number_positioner"
+require_relative "../lib/next_number_determinator"
+require_relative "custom_matchers"
 
-describe NextNumberCandidateExtractor do
+describe NextNumberDeterminator do
+
+  include CustomMatchers
 
   before(:each) do
-    @next_number_candidate_extractor = NextNumberCandidateExtractor.new
+    @next_number_determinator = NextNumberDeterminator.new
   end
 
+
   it "allows ones, twos and threes when game board is in initial state" do
-    @number_adder.select_position([]).should eq({})
+    @next_number_determinator.select_number(
+      Matrix.rows([[1,3,0,0],
+                   [2,0,3,2],
+                   [0,0,3,1],
+                   [2,0,0,3]])).should eq(1)
   end
 
 end
