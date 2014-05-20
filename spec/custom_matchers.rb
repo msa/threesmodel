@@ -6,7 +6,11 @@ module CustomMatchers
 
     def matches?(target)
       @target = target
-      @expected.include?(@target.keys[0])
+      if(@target.respond_to? :keys) then
+        @expected.include?(@target.keys[0])
+      else
+        @expected.include?(@target)
+      end
     end
 
     def failure_message

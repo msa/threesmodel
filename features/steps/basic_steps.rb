@@ -1,5 +1,7 @@
 require 'Matrix'
 require_relative '../../lib/game_board_folder'
+require_relative '../../lib/score_calculator'
+
 Given(/^a gameboard$/) do |table|
   @game_board = GameBoardFolder.new
   matrix = table.raw
@@ -31,4 +33,10 @@ Then(/^the gameboard looks like$/) do |table|
   matrix = table.raw
   matrix = matrix.map{|l| l.map{|cell| cell.strip.to_i}}
   @state.should == Matrix.rows(matrix)
+end
+
+Then(/^score is:"(.*?)"$/) do |score|
+  score_calculator = ScoreCalculator.new
+  actual_score = score_calculator.score_for(@state)
+  actual_score.should == score.to_i
 end

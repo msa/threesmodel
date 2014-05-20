@@ -15,7 +15,7 @@ describe NextNumberDeterminator do
       Matrix.rows([[1,3,0,0],
                    [2,0,3,2],
                    [0,0,3,1],
-                   [2,0,0,3]])).should eq(1)
+                   [2,0,0,3]])).should be_one_of([1, 2, 3])
   end
 
 end
