@@ -2,13 +2,20 @@ require "bundler/gem_tasks"
 require 'rspec/core/rake_task'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:cucumber)
-RSpec::Core::RakeTask.new(:spec)
+Cucumber::Rake::Task.new(:cucumber) do |t|
+  t.cucumber_opts = '--format Fivemat'
+end
+RSpec::Core::RakeTask.new(:spec) do |t|
+    t.rspec_opts = '--format Fuubar'
+end
+
 RSpec::Core::RakeTask.new(:htmlspec) do |t|
   t.rspec_opts = '--format html --out reports/rspec_results.html'
 end
 
 task :default => :spec
+
+task :all_tests => [:cucumber, :spec]
 
 namespace :rspec_report do
   desc 'Run all specs and generate RSpec report in HTML'
