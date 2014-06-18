@@ -18,8 +18,7 @@ class ScoreCalculator
   def score_for(game_board)
     score = 0
     game_board.row_vectors.each {|vector|
-      values = vector.to_a
-      values.each {|val|
+      vector.to_a.each {|val|
         score = score + @score_table[val]
       }
     }
