@@ -36,7 +36,6 @@ Then(/^the gameboard looks like$/) do |table|
 end
 
 Then(/^score is:"(.*?)"$/) do |score|
-  score_calculator = ScoreCalculator.new
-  actual_score = score_calculator.score_for(@state)
+  actual_score = ScoreCalculator.score_for(@state)
   actual_score.should == score.to_i
 end

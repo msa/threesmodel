@@ -1,7 +1,7 @@
+# This class is responsible for calculating the score for a given game board.
 class ScoreCalculator
 
-  def initialize
-    @score_table = {0 => 0, 1 => 0, 2 => 0,
+    @@score_table = {0 => 0, 1 => 0, 2 => 0,
                    3 => 3, 6 => 9,
                    12 => 27,
                    24 => 81,
@@ -13,15 +13,15 @@ class ScoreCalculator
                    1536 => 59049,
                    3072 => 177147,
                    6144 => 531441}
-  end
 
-  def score_for(game_board)
+  def self.score_for(game_board)
     score = 0
     game_board.row_vectors.each {|vector|
       vector.to_a.each {|val|
-        score = score + @score_table[val]
+        score = score + @@score_table[val]
       }
     }
     score
   end
+
 end
