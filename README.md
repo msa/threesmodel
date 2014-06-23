@@ -20,7 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-Hmm... more information will be provided in time.
+Creating and playing a basic game works like this:
+
+require 'threesmodel'
+game_controller = Threesmodel::GameController.new
+game_state = game_controller.start_new_game
+
+The game state object is a hash with the keys "id" (the identifier of the game),
+"game" the layout of the current game board (as an instance of a Matrix),
+"game_over" (boolean that denotes whether the game is over or not),
+"next_number" states the number to be added after the next fold and "score" that states the current score.
+
+Play by issuing fold calls to the game controller identifying the game with the id like this:
+
+game_state = game_controller.fold_left(game_state["id"])
+game_state = game_controller.fold_right(game_state["id"])
+game_state = game_controller.fold_up(game_state["id"])
+game_state = game_controller.fold_down(game_state["id"])
+
 
 ## Contributing
 

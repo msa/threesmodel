@@ -8,6 +8,7 @@ require 'game_over_checker'
 require 'game_creator'
 require 'securerandom'
 require 'matrix'
+require 'score_calculator'
 
 module Threesmodel
 
@@ -93,7 +94,7 @@ module Threesmodel
       game.row_vectors.each_index {|i|
         values = game.row_vectors[i].to_a
         if (coordinates[0] == i)
-          values[coordinates[0]] = @next_number[id]
+          values[coordinates[1]] = @next_number[id]
         end
         new_state << values
       }
@@ -105,7 +106,7 @@ module Threesmodel
     end
 
     def respond_to_player(id, next_number)
-      {"id" => id, "game" => @games[id], "next_number" => next_number, "game_over" => @game_over_checker.game_over?(@games[id])}
+      {"id" => id, "game" => @games[id], "next_number" => next_number, "game_over" => @game_over_checker.game_over?(@games[id]), "score" => ScoreCalculator.score_for(@games[id]) }
     end
 
   end

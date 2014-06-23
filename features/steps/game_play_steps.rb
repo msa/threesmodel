@@ -17,11 +17,24 @@ Then(/^the game is not over$/) do
 end
 
 Then(/^the game board has (\d+) cells filled$/) do |filled_cells|
-
+  c = []
+  values = @game_state["game"].row_vectors.each{|row|
+    c << row.to_a
+  }
+  c.flatten!
+  d = c.find_all{|item| item > 0}
+  d.size.should eq(9)
 end
 
 Then(/^the board contains no other but the following numbers:$/) do |table|
-  # table is a Cucumber::Ast::Table
-
+  data = table.raw[0]
+  c = []
+  values = @game_state["game"].row_vectors.each{|row|
+    c << row.to_a
+  }
+  c.flatten!.uniq!
+  data.each{|value|
+    c.include?(value.to_i).should eq(true)
+  }
 end
 
