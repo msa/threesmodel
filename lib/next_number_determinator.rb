@@ -16,6 +16,6 @@ class NextNumberDeterminator
   end
 
   def select_number(game_board)
-    return 1
+    @score_table[rand(1..([3, @score_table.index(highest_number(game_board))-2].max))]
   end
 end

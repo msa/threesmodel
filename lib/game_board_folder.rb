@@ -51,4 +51,36 @@ class GameBoardFolder
     Matrix.columns(new_state)
   end
 
+  def can_fold_left?(state)
+    foldable = false
+    state.row_vectors.each{|line|
+      foldable = (foldable or @line_folder.can_fold?(line.to_a))
+    }
+    foldable
+  end
+
+  def can_fold_right?(state)
+    foldable = false
+    state.row_vectors.each{|line|
+      foldable = (foldable or @line_folder.can_fold?(line.to_a.reverse))
+    }
+    foldable
+  end
+
+  def can_fold_up?(state)
+    foldable = false
+    state.column_vectors.each{|line|
+      foldable = (foldable or @line_folder.can_fold?(line.to_a))
+    }
+    foldable
+  end
+
+  def can_fold_down?(state)
+    foldable = false
+    state.column_vectors.each{|line|
+      foldable = (foldable or @line_folder.can_fold?(line.to_a.reverse))
+    }
+    foldable
+  end
+
 end
