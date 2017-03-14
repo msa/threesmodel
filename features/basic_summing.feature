@@ -38,7 +38,7 @@ Scenario: Equal numbers in the middle of the line
   |12|6|24|48|
   | 3|6| 3| 3|
 
-Scenario: Fold an uniminous matrix completely
+Scenario: Fold an unanimous matrix completely
   Given a gameboard
   |12|12|12|12|
   |12|12|12|12|

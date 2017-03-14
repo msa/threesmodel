@@ -8,23 +8,23 @@ describe GameBoardFolder do
   end
 
   it "can create game board" do
-    @game_board_folder.should_not eq(nil)
+    expect(@game_board_folder).to_not eq(nil)
   end
 
   it "can fold all rows to the left" do
-    @game_board_folder.fold_left(
+    expect(@game_board_folder.fold_left(
       Matrix.rows([[0,1,2,0],
                    [0,1,2,0],
                    [0,1,2,0],
-                   [0,1,2,0]])).row(0).to_a.should eq([1,2,0,0])
+                   [0,1,2,0]])).row(0).to_a).to eq([1,2,0,0])
   end
 
   it "can fold all rows to the right" do
-    @game_board_folder.fold_right(
+    expect(@game_board_folder.fold_right(
       Matrix.rows([[0,1,2,0],
                    [0,1,2,0],
                    [0,1,2,0],
-                   [0,1,2,0]])).row(0).to_a.should eq([0,0,1,2])
+                   [0,1,2,0]])).row(0).to_a).to eq([0,0,1,2])
   end
 
   it "can fold all rows up" do
@@ -33,8 +33,8 @@ describe GameBoardFolder do
                    [1,1,1,1],
                    [2,2,2,2],
                    [0,0,0,0]]))
-    state.row(0).to_a.should eq([1,1,1,1])
-    state.row(1).to_a.should eq([2,2,2,2])
+    expect(state.row(0).to_a).to eq([1,1,1,1])
+    expect(state.row(1).to_a).to eq([2,2,2,2])
   end
 
   it "can fold all rows down" do
@@ -43,8 +43,8 @@ describe GameBoardFolder do
                    [1,1,1,1],
                    [2,2,2,2],
                    [0,0,0,0]]))
-    state.row(2).to_a.should eq([1,1,1,1])
-    state.row(3).to_a.should eq([2,2,2,2])
+    expect(state.row(2).to_a).to eq([1,1,1,1])
+    expect(state.row(3).to_a).to eq([2,2,2,2])
   end
 
 end

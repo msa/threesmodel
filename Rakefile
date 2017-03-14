@@ -3,10 +3,12 @@ require 'rspec/core/rake_task'
 require 'cucumber/rake/task'
 
 Cucumber::Rake::Task.new(:cucumber) do |t|
-  t.cucumber_opts = '--format Fivemat'
+
+  #t.cucumber_opts = '--format Fivemat'
 end
+
 RSpec::Core::RakeTask.new(:spec) do |t|
-    t.rspec_opts = '--format Fuubar'
+    t.rspec_opts = '--format Fivemat'
 end
 
 RSpec::Core::RakeTask.new(:htmlspec) do |t|
@@ -15,15 +17,12 @@ end
 
 task :default => :spec
 
-task :all_tests => [:cucumber, :spec]
+task :test => [:cucumber, :spec]
 
 namespace :rspec_report do
-  desc 'Run all specs and generate RSpec report in HTML'
-  task :html => :htmlspec
-
   desc 'Run all specs, generate RSpec report and open it in the browser'
   task :browser do
-    Rake::Task[:spec].invoke
+    Rake::Task[:htmlspec].invoke
     `open reports/rspec_results.html` # This only works if running OS X.
   end
 end

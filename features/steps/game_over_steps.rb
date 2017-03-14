@@ -31,7 +31,7 @@ Given(/^a game board that only folds right and down$/) do
 end
 
 Then(/^the game is over$/) do
-  @game_over_checker.game_over?(@state).should == true
+  expect(@game_over_checker.game_over?(@state)).to eq(true)
 end
 
 Given(/^a foldable game board$/) do
@@ -40,5 +40,5 @@ Given(/^a foldable game board$/) do
 end
 
 Then(/^the game continues$/) do
-  @game_over_checker.game_over?(@state).should == false
+  expect(@game_over_checker.game_over?(@state)).to eq(false)
 end

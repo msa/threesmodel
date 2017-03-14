@@ -32,10 +32,10 @@ end
 Then(/^the gameboard looks like$/) do |table|
   matrix = table.raw
   matrix = matrix.map{|l| l.map{|cell| cell.strip.to_i}}
-  @state.should == Matrix.rows(matrix)
+  expect(@state).to eq(Matrix.rows(matrix))
 end
 
 Then(/^score is:"(.*?)"$/) do |score|
   actual_score = ScoreCalculator.score_for(@state)
-  actual_score.should == score.to_i
+  expect(actual_score).to eq(score.to_i)
 end

@@ -11,24 +11,27 @@ require 'matrix'
 require 'score_calculator'
 
 module Threesmodel
+  class InternalAPI
+    def initialize
 
-
+    end
+  end
   class GameController
 
     def initialize
       @games = {}
       @next_number = {}
-    end
-
-    def start_new_game
       @candidate_extractor = CandidateExtractor.new
       @candidate_translator = CandidateTranslator.new
       @game_over_checker = GameOverChecker.new
       @next_number_determinator = NextNumberDeterminator.new
       @number_positioner = NextNumberPositioner.new
       @game_board_folder = GameBoardFolder.new
+    end
+
+    def start_new_game(algorithm=:manual)
       id = SecureRandom.uuid
-      @games[id] = GameCreator.create_new_game()
+      @games[id] = GameCreator.create_new_game
       @next_number[id] = getNextNumber(@games[id])
       respond_to_player(id, @next_number[id])
     end
@@ -36,7 +39,7 @@ module Threesmodel
     def fold_right(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_right?(game))
-        puts "Foldable: #{@game_board_folder.can_fold_right?(game)} - bailing out!"
+        puts "Unable to fold right - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_right_fold(@candidate_extractor.fold_right_candidates(game))
@@ -47,7 +50,7 @@ module Threesmodel
     def fold_left(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_left?(game))
-        puts "unable to fold - bailing out!"
+        puts "Unable to fold left - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_left_fold(@candidate_extractor.fold_left_candidates(game))
@@ -58,7 +61,7 @@ module Threesmodel
     def fold_down(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_down?(game))
-        puts "unable to fold - bailing out!"
+        puts "Unable to fold down - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_down_fold(@candidate_extractor.fold_down_candidates(game))
@@ -69,7 +72,7 @@ module Threesmodel
     def fold_up(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_up?(game))
-        puts "unable to fold - bailing out!"
+        puts "Unable to fold up - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_up_fold(@candidate_extractor.fold_up_candidates(game))

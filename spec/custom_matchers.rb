@@ -17,7 +17,7 @@ module CustomMatchers
       "expected #{@target} to be one of the elements of #{@expected}"
     end
 
-    def negative_failure_message
+    def failure_message_when_negated
       "expected #{@target} not to be one of the elements of #{@expected}"
     end
   end

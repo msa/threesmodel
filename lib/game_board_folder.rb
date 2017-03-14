@@ -12,7 +12,7 @@ class GameBoardFolder
     new_state = []
     state.row_vectors.each_index {|i|
       values = state.row_vectors[i].to_a
-      @line_folder.fold(values)
+      values = @line_folder.fold(values)
       new_state << values
     }
     Matrix.rows(new_state)
@@ -23,7 +23,7 @@ class GameBoardFolder
     new_state = []
     state.row_vectors.each {|row|
       values = row.to_a.reverse
-      @line_folder.fold(values)
+      values = @line_folder.fold(values)
       new_state << values.reverse
     }
     Matrix.rows(new_state)
@@ -34,7 +34,7 @@ class GameBoardFolder
     new_state = []
     state.column_vectors.each {|column|
       values = column.to_a
-      @line_folder.fold(values)
+      values = @line_folder.fold(values)
       new_state << values
     }
     Matrix.columns(new_state)
@@ -45,7 +45,7 @@ class GameBoardFolder
     new_state = []
     state.column_vectors.each {|column|
       values = column.to_a.reverse
-      @line_folder.fold(values)
+      values = @line_folder.fold(values)
       new_state << values.reverse
     }
     Matrix.columns(new_state)

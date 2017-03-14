@@ -9,11 +9,11 @@ Given(/^a new game is started$/) do
 end
 
 Then(/^an id is attached to the game$/) do
-  @game_state["id"].should_not == nil
+  expect(@game_state["id"]).to_not eq(nil)
 end
 
 Then(/^the game is not over$/) do
-  @game_state["game_over"].should_not == true
+  expect(@game_state["game_over"]).to eq(false)
 end
 
 Then(/^the game board has (\d+) cells filled$/) do |filled_cells|
@@ -23,7 +23,7 @@ Then(/^the game board has (\d+) cells filled$/) do |filled_cells|
   }
   c.flatten!
   d = c.find_all{|item| item > 0}
-  d.size.should eq(9)
+  expect(d.size).to eq(9)
 end
 
 Then(/^the board contains no other but the following numbers:$/) do |table|
@@ -34,7 +34,6 @@ Then(/^the board contains no other but the following numbers:$/) do |table|
   }
   c.flatten!.uniq!
   data.each{|value|
-    c.include?(value.to_i).should eq(true)
+    expect(c.include?(value.to_i)).to eq(true)
   }
 end
-
