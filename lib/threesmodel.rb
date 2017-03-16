@@ -29,7 +29,7 @@ module Threesmodel
       @game_board_folder = GameBoardFolder.new
     end
 
-    def start_new_game(algorithm=:manual)
+    def start_new_game
       id = SecureRandom.uuid
       @games[id] = GameCreator.create_new_game
       @next_number[id] = getNextNumber(@games[id])
@@ -39,7 +39,6 @@ module Threesmodel
     def fold_right(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_right?(game))
-        puts "Unable to fold right - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_right_fold(@candidate_extractor.fold_right_candidates(game))
@@ -50,7 +49,6 @@ module Threesmodel
     def fold_left(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_left?(game))
-        puts "Unable to fold left - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_left_fold(@candidate_extractor.fold_left_candidates(game))
@@ -61,7 +59,6 @@ module Threesmodel
     def fold_down(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_down?(game))
-        puts "Unable to fold down - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_down_fold(@candidate_extractor.fold_down_candidates(game))
@@ -72,7 +69,6 @@ module Threesmodel
     def fold_up(id)
       game = @games[id]
       unless (@game_board_folder.can_fold_up?(game))
-        puts "Unable to fold up - bailing out!"
         return did_not_fold(game, id)
       end
       candidates = @candidate_translator.translate_up_fold(@candidate_extractor.fold_up_candidates(game))
@@ -109,7 +105,7 @@ module Threesmodel
     end
 
     def respond_to_player(id, next_number)
-      {"id" => id, "game" => @games[id], "next_number" => next_number, "game_over" => @game_over_checker.game_over?(@games[id]), "score" => ScoreCalculator.score_for(@games[id]) }
+      {:id => id, :game => @games[id], :next_number => next_number, :game_over => @game_over_checker.game_over?(@games[id]), :score => ScoreCalculator.score_for(@games[id]) }
     end
 
   end

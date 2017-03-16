@@ -9,16 +9,16 @@ Given(/^a new game is started$/) do
 end
 
 Then(/^an id is attached to the game$/) do
-  expect(@game_state["id"]).to_not eq(nil)
+  expect(@game_state[:id]).to_not eq(nil)
 end
 
 Then(/^the game is not over$/) do
-  expect(@game_state["game_over"]).to eq(false)
+  expect(@game_state[:game_over]).to eq(false)
 end
 
 Then(/^the game board has (\d+) cells filled$/) do |filled_cells|
   c = []
-  values = @game_state["game"].row_vectors.each{|row|
+  values = @game_state[:game].row_vectors.each{|row|
     c << row.to_a
   }
   c.flatten!
@@ -29,7 +29,7 @@ end
 Then(/^the board contains no other but the following numbers:$/) do |table|
   data = table.raw[0]
   c = []
-  values = @game_state["game"].row_vectors.each{|row|
+  values = @game_state[:game].row_vectors.each{|row|
     c << row.to_a
   }
   c.flatten!.uniq!
