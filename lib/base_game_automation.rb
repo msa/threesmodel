@@ -1,6 +1,9 @@
+require_relative 'game_board_folder'
+
 class BaseGameAutomation
   def initialize
     @game_controller = Threesmodel::GameController.new
+    @game_board_folder = GameBoardFolder.new
     @scores = []
     @best_game = nil
   end

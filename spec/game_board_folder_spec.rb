@@ -47,4 +47,13 @@ describe GameBoardFolder do
     expect(state.row(3).to_a).to eq([2,2,2,2])
   end
 
+  it "can not fold up when no columns can be folded" do
+    state = @game_board_folder.can_fold_up?(
+      Matrix.rows([[3,0,3,3],
+                   [2,0,2,1],
+                   [3,0,3,3],
+                   [2,0,2,1]]))
+    expect(state).to eq(false)
+  end
+
 end

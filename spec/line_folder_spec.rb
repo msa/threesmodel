@@ -33,6 +33,10 @@ describe LineFolder do
       expect(@line_folder.can_fold?([0,0,1,2])).to eq(true)
     end
 
+    it "can not fold when line is all zeros" do
+      expect(@line_folder.can_fold?([0,0,0,0])).to eq(false)
+    end
+
     it "can not fold when line is all ones" do
       expect(@line_folder.can_fold?([1,1,1,1])).to eq(false)
     end

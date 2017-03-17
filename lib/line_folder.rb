@@ -53,6 +53,7 @@ class LineFolder
   end
 
   def can_fold?(line)
+    return false if line == [0,0,0,0]
     foldable = has_adjacent_one_and_two?(line)
     foldable = (foldable or has_adjacent_equals?(line))
     foldable = (foldable or has_non_trailing_zeros?(line))
