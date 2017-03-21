@@ -28,12 +28,13 @@ end
 
 Then(/^the board contains no other but the following numbers:$/) do |table|
   data = table.raw[0]
+  data = data.map{|x| x.to_i}
   c = []
-  values = @game_state[:game].row_vectors.each{|row|
+  @game_state[:game].row_vectors.each{|row|
     c << row.to_a
   }
   c.flatten!.uniq!
-  data.each{|value|
-    expect(c.include?(value.to_i)).to eq(true)
+  c.each{|value|
+    expect(data.include?(value.to_i)).to eq(true)
   }
 end

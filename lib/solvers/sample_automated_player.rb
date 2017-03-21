@@ -1,6 +1,6 @@
 require 'threesmodel'
 require 'histogram/array'
-require 'base_game_automation'
+require_relative 'base_game_automation'
 
 class SampleAutomatedPlayer < BaseGameAutomation
 
