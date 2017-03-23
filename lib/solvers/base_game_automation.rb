@@ -1,9 +1,11 @@
 require 'game_board_folder'
+require 'score_calculator'
 
 class BaseGameAutomation
   def initialize
     @game_controller = Threesmodel::GameController.new
     @game_board_folder = GameBoardFolder.new
+    @score_calculator = ScoreCalculator.new
     @scores = []
     @highest_cell_value_histogram = { c3: 0, c6: 0, c12: 0, c24: 0, c48: 0, c96: 0, c192: 0, c384: 0, c768: 0, c1536: 0, c3072: 0, c6144:0}
     @best_game = nil
