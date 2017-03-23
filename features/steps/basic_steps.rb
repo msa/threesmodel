@@ -39,3 +39,20 @@ Then(/^score is:"(.*?)"$/) do |score|
   actual_score = ScoreCalculator.score_for(@state)
   expect(actual_score).to eq(score.to_i)
 end
+
+
+Then(/^the gameboard can fold left$/) do
+  expect(@game_board.can_fold_left?(@state)).to eq(true)
+end
+
+Then(/^the gameboard can fold down$/) do
+  expect(@game_board.can_fold_down?(@state)).to eq(true)
+end
+
+Then(/^the gameboard can not fold up$/) do
+  expect(@game_board.can_fold_up?(@state)).to eq(false)
+end
+
+Then(/^the gameboard can not fold right$/) do
+  expect(@game_board.can_fold_right?(@state)).to eq(false)
+end

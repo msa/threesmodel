@@ -64,3 +64,25 @@ Scenario: I am folding down over zeros
   |0|0|0|0|
   |2|2|2|2|
   |1|1|1|1|
+
+  Scenario: Folding a specific gameboard
+    Given a gameboard
+    |2|24| 1|24|
+    |0| 3| 6|12|
+    |0| 6| 2| 2|
+    |0| 0| 0| 3|
+    Then the gameboard can fold left
+    And the gameboard can fold down
+    And the gameboard can not fold up
+    And the gameboard can not fold right
+
+  Scenario: Folding a specific gameboard
+    Given a gameboard
+      |6|12| 1| 6|
+      |2| 6| 1| 1|
+      |0| 0| 3|12|
+      |0| 0| 0| 2|
+    Then the gameboard can fold left
+    And the gameboard can fold down
+    And the gameboard can not fold up
+    And the gameboard can not fold right

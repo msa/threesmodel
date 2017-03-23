@@ -41,6 +41,10 @@ describe LineFolder do
       expect(@line_folder.can_fold?([1,1,1,1])).to eq(false)
     end
 
+    it "can not fold when line is all twos" do
+      expect(@line_folder.can_fold?([2,2,2,2])).to eq(false)
+    end
+
     it "can fold when line has a one and a two adjacent" do
       expect(@line_folder.can_fold?([1,2,1,1])).to eq(true)
     end
@@ -51,6 +55,20 @@ describe LineFolder do
 
     it "can fold over two equal numbers larger than 2" do
       expect(@line_folder.can_fold?([3,3,6,12])).to eq(true)
+    end
+
+    it "can not fold" do
+      expect(@line_folder.can_fold?([2,0,0,0])).to eq(false)
+      expect(@line_folder.can_fold?([24,3,6,0])).to eq(false)
+      expect(@line_folder.can_fold?([1,6,2,0])).to eq(false)
+      expect(@line_folder.can_fold?([24,12,2,3])).to eq(false)
+    end
+
+    it "can not even fold" do
+      expect(@line_folder.can_fold?([6,2,0,0])).to eq(false)
+      expect(@line_folder.can_fold?([12,6,0,0])).to eq(false)
+      expect(@line_folder.can_fold?([1,1,3,0])).to eq(false)
+      expect(@line_folder.can_fold?([6,1,12,2])).to eq(false)
     end
 
     it "folds undetectably when all zero line" do
@@ -88,4 +106,37 @@ describe LineFolder do
       expect(@line_folder.fold([1,2,0,3])).to eq([3,0,3,0])
     end
 
+    it "considers to have the wall index at cell 3 for an all zero line" do
+      expect([0,0,0,0].wall_index_of).to eq(3)
+    end
+    it "considers to have the wall index at cell 3 for an all ones line" do
+      expect([1,1,1,1].wall_index_of).to eq(3)
+    end
+    it "considers to have the wall index at cell 3 for an all twos line" do
+      expect([2,2,2,2].wall_index_of).to eq(3)
+    end
+
+    it "considers an line with trailing zeros to have wall index 3" do
+      expect([2,0,0,0].wall_index_of).to eq(3)
+    end
+
+    it "considers an line with less trailing zeros to have wall index 3" do
+      expect([2,2,0,0].wall_index_of).to eq(3)
+    end
+
+    it "considers an line with trailing ones to have wall index 3" do
+      expect([3,1,1,1].wall_index_of).to eq(3)
+    end
+
+    it "considers an line with less trailing ones to have wall index 3" do
+      expect([3,6,1,1].wall_index_of).to eq(3)
+    end
+
+    it "considers an line with trailing twos to have wall index 3" do
+      expect([3,2,2,2].wall_index_of).to eq(3)
+    end
+
+    it "considers an line with less trailing twos to have wall index 3" do
+      expect([3,6,2,2].wall_index_of).to eq(3)
+    end
 end

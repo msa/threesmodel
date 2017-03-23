@@ -1,11 +1,12 @@
 require_relative '../../lib/threesmodel'
-
+require_relative '../../lib/game_board_folder'
 Before do
 end
 
 Given(/^a new game is started$/) do
    @game_controller = Threesmodel::GameController.new
    @game_state = @game_controller.start_new_game
+   @gameboard_folder = GameBoardFolder.new
 end
 
 Then(/^an id is attached to the game$/) do
@@ -15,6 +16,7 @@ end
 Then(/^the game is not over$/) do
   expect(@game_state[:game_over]).to eq(false)
 end
+
 
 Then(/^the game board has (\d+) cells filled$/) do |filled_cells|
   c = []
