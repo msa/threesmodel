@@ -1,5 +1,4 @@
 require_relative 'line_folder'
-require "Matrix"
 # A game board keeps and manipulates the state of the game.
 class GameBoardFolder
 

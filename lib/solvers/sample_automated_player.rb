@@ -1,8 +1,7 @@
 require 'threesmodel'
-require 'histogram/array'
-require_relative 'base_game_automation'
 
-class SampleAutomatedPlayer < BaseGameAutomation
+
+class SampleAutomatedPlayer < Threesmodel::BaseGameAutomation
 
   def play
     while (not @game[:game_over]) do

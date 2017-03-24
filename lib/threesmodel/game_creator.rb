@@ -1,5 +1,3 @@
-require 'Matrix'
-
 class GameCreator
   def self.create_new_game
     positions = random_positions(9)

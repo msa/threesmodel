@@ -24,4 +24,8 @@ class ScoreCalculator
     score
   end
 
+  def score_for(game_board)
+    ScoreCalculator.score_for(game_board)
+  end
+
 end

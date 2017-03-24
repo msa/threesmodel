@@ -1,4 +1,4 @@
-require 'line_folder'
+require_relative 'line_folder'
 class CandidateExtractor
 
   def initialize(line_folder = LineFolder.new)

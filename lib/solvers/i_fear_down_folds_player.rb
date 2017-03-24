@@ -1,7 +1,6 @@
 require 'threesmodel'
-require_relative 'base_game_automation'
 
-class IFearDownFoldsPlayer < BaseGameAutomation
+class IFearDownFoldsPlayer < Threesmodel::BaseGameAutomation
 
   def play
     while (not @game[:game_over]) do

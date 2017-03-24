@@ -1,7 +1,6 @@
 require 'threesmodel'
-require_relative 'base_game_automation'
 
-class UpRightLeftDownOrderPlayer < BaseGameAutomation
+class UpRightLeftDownOrderPlayer < Threesmodel::BaseGameAutomation
 
   def play
     while (not @game[:game_over]) do
