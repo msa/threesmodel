@@ -1,6 +1,5 @@
-require 'Matrix'
-require_relative '../../lib/game_board_folder'
-require_relative '../../lib/score_calculator'
+require 'threesmodel/game_board_folder'
+require 'threesmodel/score_calculator'
 
 Given(/^a gameboard$/) do |table|
   @game_board = GameBoardFolder.new

@@ -1,4 +1,4 @@
-require_relative "../lib/next_number_determinator"
+require "threesmodel/next_number_determinator"
 require_relative "custom_matchers"
 
 describe NextNumberDeterminator do

@@ -1,4 +1,4 @@
-require_relative "../lib/line_folder"
+require "threesmodel/line_folder"
 
 describe LineFolder do
 

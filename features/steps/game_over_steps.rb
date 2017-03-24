@@ -1,5 +1,4 @@
-require 'Matrix'
-require_relative '../../lib/game_over_checker'
+require 'threesmodel/game_over_checker'
 
 Before do
   @game_over_checker = GameOverChecker.new

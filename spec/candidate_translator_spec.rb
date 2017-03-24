@@ -1,4 +1,4 @@
-require_relative '../lib/candidate_translator'
+require 'threesmodel/candidate_translator'
 describe CandidateTranslator do
 
   it "translates left fold candidates with same candidates" do

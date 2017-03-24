@@ -1,5 +1,4 @@
-require_relative "../lib/game_board_folder"
-require "Matrix"
+require "threesmodel/game_board_folder"
 
 describe GameBoardFolder do
 

@@ -1,4 +1,4 @@
-require_relative "../lib/next_number_positioner"
+require "threesmodel/next_number_positioner"
 require_relative "custom_matchers"
 
 describe NextNumberPositioner do

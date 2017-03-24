@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../lib/game_creator'
+require 'threesmodel/game_creator'
 require 'custom_matchers'
 
 describe 'Create new Game' do

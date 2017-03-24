@@ -1,5 +1,4 @@
-require_relative "../lib/candidate_extractor"
-require "Matrix"
+require "threesmodel/candidate_extractor"
 
 describe CandidateExtractor do
 

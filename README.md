@@ -45,6 +45,43 @@ Play by issuing fold calls to the game controller identifying the game with the 
     game_state = game_controller.fold_down(game_state[:id])
 ```
 
+## Creating an automated solver
+
+If you want to try to make an automated puzzel solver. You can do the following.
+
+```ruby
+  require 'threesmodel'
+  class MySmartPlayer < Threesmodel::BaseGameAutomation
+
+
+    def play()
+      # for your convenience you will have a few API classes set up for you.
+      # these two gives you the opportunity to try things out, before you decide
+      # which move you want to make
+      @game_board_folder
+      @score_calculator
+
+      # The game controller allows you to execute a move (or fold as I like to call it)
+      @game = @game_controller.fold_down(@game[:id])
+    end
+```
+Note that you should keep the state returned after the fold in order to be able
+to progress with the game.
+
+Then you should call the automated solver in this manner (I usually use a rspec test cases as a runner).
+
+```ruby
+  player = MySmartPlayer.new
+  player.play_many(number_of_games_to_play)
+```
+Where the "number_of_games_to_play" parameter is an integer stating the numnber of games the algorithm shall play.
+The end result is a few stats about the runs. High score, a histogram of the value of the highest cell in the game board.
+And a file (called by the solver class name dot txt) containing all the scores if you want to make your own statistical analysis.
+
+Happy hacking!
+
+Future ideas is to create some basic suppurt for setting up a solver algorithm competition.
+
 
 ## Contributing
 

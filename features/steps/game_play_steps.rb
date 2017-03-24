@@ -1,5 +1,5 @@
-require_relative '../../lib/threesmodel'
-require_relative '../../lib/game_board_folder'
+require 'threesmodel'
+require 'threesmodel/game_board_folder'
 Before do
 end
 
