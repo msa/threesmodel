@@ -1,5 +1,7 @@
 .idea
-*scores.txt
+*.txt
+*.tgz
+*.iml
 *.gem
 *.rbc
 .bundle

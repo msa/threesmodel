@@ -6,7 +6,6 @@ end
 Given(/^a new game is started$/) do
    @game_controller = Threesmodel::GameController.new
    @game_state = @game_controller.start_new_game
-   @gameboard_folder = GameBoardFolder.new
 end
 
 Then(/^an id is attached to the game$/) do

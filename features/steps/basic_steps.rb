@@ -1,7 +1,7 @@
 require 'threesmodel/game_board_folder'
 require 'threesmodel/score_calculator'
 
-Given(/^a gameboard$/) do |table|
+Given(/^a game board$/) do |table|
   @game_board = GameBoardFolder.new
   matrix = table.raw
   matrix = matrix.map{|l| l.map{|cell| cell.strip.to_i}}
@@ -28,7 +28,7 @@ When(/^the game is folded right$/) do
   @state = @game_board.fold_right @state
 end
 
-Then(/^the gameboard looks like$/) do |table|
+Then(/^the game board looks like$/) do |table|
   matrix = table.raw
   matrix = matrix.map{|l| l.map{|cell| cell.strip.to_i}}
   expect(@state).to eq(Matrix.rows(matrix))
@@ -40,18 +40,18 @@ Then(/^score is:"(.*?)"$/) do |score|
 end
 
 
-Then(/^the gameboard can fold left$/) do
+Then(/^the game board can fold left$/) do
   expect(@game_board.can_fold_left?(@state)).to eq(true)
 end
 
-Then(/^the gameboard can fold down$/) do
+Then(/^the game board can fold down$/) do
   expect(@game_board.can_fold_down?(@state)).to eq(true)
 end
 
-Then(/^the gameboard can not fold up$/) do
+Then(/^the game board can not fold up$/) do
   expect(@game_board.can_fold_up?(@state)).to eq(false)
 end
 
-Then(/^the gameboard can not fold right$/) do
+Then(/^the game board can not fold right$/) do
   expect(@game_board.can_fold_right?(@state)).to eq(false)
 end
