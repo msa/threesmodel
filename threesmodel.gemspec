@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["mans.sandstrom@gmail.com"]
   spec.description   = %q{A stab at implementing the game logic for the game threes, eventually making it scriptable for a bot.}
   spec.summary       = %q{An API for something that resembles the game threes}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/msa/threesmodel"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

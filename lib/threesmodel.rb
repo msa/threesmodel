@@ -48,6 +48,7 @@ module Threesmodel
         @scores << score
         print "." if iteration % 1000 == 0
         update_highest_value_histogram(@game[:game])
+        iteration += 1
       end
       puts "Done!"
       puts max_score
